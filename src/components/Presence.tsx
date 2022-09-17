@@ -8,6 +8,8 @@ import background from '../images/bg-2.jpg' ;
 import { Navbar } from "./NavBarComponent";
 import './Event.css';
 import { MDBFile } from 'mdb-react-ui-kit';
+import { StudentList } from './StudentList';
+import Pagination from 'react-bootstrap/Pagination';
 
 
 export function Presence() {
@@ -16,43 +18,21 @@ export function Presence() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     return (
-        <div>
+        <div style={{background : `url(${background})`}}>
             <div>
-            <Navbar label="Welcome to Facial Reocognition"/>
-            </div>
-            <div className='event-container'  style={{background : `url(${background})`}}>
-          <div className='button-container'>
-            <div className = "create-button">
-              <Button variant="danger" size="lg" onClick={handleShow} style={{width : "400px",marginLeft : "0px"}}>
-              Recognition Mode
-              </Button>
-            </div>
-          </div>
-          <div style={{marginTop : ""}}>
-            <Link to="/event">
-                <Button variant="primary" size="lg" style={{marginLeft : "90%",width: "100px", marginTop : "-9%"}}>
-                  Finish
-                </Button>
-              </Link>
-            </div>
-            
-
-            <Modal show={show} onHide={handleClose}>
-              <Modal.Header closeButton>
-                <Modal.Title>Importer ici votre image</Modal.Title>
-              </Modal.Header>
-              <Modal.Body>
-                <Form>
-                <MDBFile size='lg' id='formFileLg' />
-                </Form>
-              </Modal.Body>
-              <Modal.Footer>
-                <Button variant="warning">
-                  Finish
-                </Button>
-              </Modal.Footer>
-            </Modal>
-        </div>
+            <Navbar label="STUDENT REKOGNITION"/>
+            </div> <br />
+            <div className='event-container'  style={{display : "flex", flexDirection : "column"}}>
+              <div>
+                <StudentList/>
+              </div> <br /> 
+              <div style={{display : "flex",alignItems : "center", justifyContent : "center", justifyItems :"center"}}>
+                <Link to='/event'><Button variant="warning" size='lg' style={{width : "150px"}}>
+                    Finish
+                </Button></Link>
+              </div>
+              
+            </div>           
         </div>
     )
 }

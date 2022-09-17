@@ -172,3 +172,21 @@
     }
   }
   
+
+  .button-presence {
+    border: 0;
+    border-radius: 15px;
+    background: linear-gradient(
+      140deg,
+      #DC3545 0%,
+      #DC3545 50%,
+      #DC3545 75%
+    ) !important;
+    color: #fff;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 5px 16px;
+    width: 200px;
+    height: 60px;
+    margin-left: 225px;
+  }

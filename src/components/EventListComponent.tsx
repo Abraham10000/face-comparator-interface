@@ -80,6 +80,7 @@ export function EventList() {
               </div> <br />
               <br />
               <button type="button" className="button" onClick={handleShow}>Modify</button>
+              <Link to='/presence'><button type="button" className="button-presence">Presence</button></Link>
             </div>
           </div>
           </div>

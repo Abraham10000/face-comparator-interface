@@ -7,6 +7,7 @@ import { EventList } from './components/EventListComponent';
 import { EventListAdd } from './components/EventList';
 import { Navbar } from './components/NavBarComponent';
 import { Presence } from './components/Presence';
+import { StudentList } from './components/StudentList';
 
 function App() {
   return (
@@ -15,8 +16,9 @@ function App() {
         <Route path='/' element={<Login/>}/>
         <Route path='/home' element={<Event/>}/>
         <Route path='/event' element={<EventListAdd/>}/>
-        <Route path='/navbar' element={<Navbar/>}/>
+        <Route path='/card' element={<EventList/>}/>
         <Route path='/presence' element={<Presence/>}/>
+        <Route path='/student' element={<StudentList/>}/>
       </Routes>
     </>
     
