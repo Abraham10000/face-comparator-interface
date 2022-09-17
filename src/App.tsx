@@ -5,7 +5,6 @@ import { Login } from './components/Login';
 import { Event } from './components/Event';
 import { EventList } from './components/EventListComponent';
 import { EventListAdd } from './components/EventList';
-import { Navbar } from './components/NavBarComponent';
 import { Presence } from './components/Presence';
 import { StudentList } from './components/StudentList';
 

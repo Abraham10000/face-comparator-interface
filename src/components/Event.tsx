@@ -17,6 +17,8 @@ export function Event() {
         const handleClose = () => setShow(false);
         const handleShow = () => setShow(true);
         const [time , setTime] = useState("");
+
+        const [eventType,setEventType] = useState<string>("");
         
         function getTime() {
           var today = new Date();
@@ -34,11 +36,11 @@ export function Event() {
           <div className='button-container'>
             <div className = "create-button">
               <Button variant="outline-warning" size="lg" onClick={handleShow} style={{width : "200px",marginLeft : "90px"}}>
-              Create Event
+              Créer un Event
               </Button>
               <Link to="/event">
                 <Button variant="outline-warning" size="lg" style={{marginLeft : "20px",width: "200px"}}>
-                  See Event
+                  Voir la liste des Events
                 </Button>
               </Link>
             </div>
@@ -53,39 +55,38 @@ export function Event() {
 
             <Modal show={show} onHide={handleClose}>
               <Modal.Header closeButton>
-                <Modal.Title>Creat a new Course !</Modal.Title>
+                <Modal.Title>Création d'un Nouvel Event</Modal.Title>
               </Modal.Header>
               <Modal.Body>
                 <Form>
                   <div className='choice-container'>
-                    <h6>Chose one event : </h6>
+                    <h6>Type de l'Event : </h6>
                     <div className='choice'>
-                        <Form.Select defaultValue="Choose..." className="form-control" name="a_state"   onChange={(e) => {setForm(e.target.value)}}>
-                            <option value="Choose...">Course</option>
-                            <option value="Delhi">Delhi</option>
-                            <option value="Bombay">Bommbay</option>
-                            <option value="New York">New York</option>
-                            <option value="Kashmir">Kashmir</option>
-                        </Form.Select>
+                        <input 
+                          className='form-control'
+                          onChange={(e) => setEventType(e?.target?.value)}
+                          value={eventType} />
                     </div> 
                   </div> <br />
                   <div className='course-type-container'>
-                    <h6>Chose a course or give the event:</h6>
+                    <h6>Choisissez un Cours ou un Event</h6>
                     <div className='course'>
                       <InputGroup className="mb-3">
-                        <Form.Select defaultValue="Chose Course" className="form-control" name="a_state"onChange={(e) => {setForm(e.target.value)}}>
-                            <option value="Choose...">Chose course</option>
-                            <option value="Delhi">SYS</option>
-                            <option value="Bombay">DONNEE</option>
-                            <option value="New York">EL</option>
-                            <option value="Kashmir">TN</option>
-                        </Form.Select>
-                        <Form.Control aria-label="Text input with dropdown button"  placeholder='Give the new event'/>
+                        {
+                          eventType.toLowerCase() === "course" ? <Form.Select defaultValue="Chose Course" className="form-control" name="a_state"onChange={(e) => {setForm(e.target.value)}}>
+                          <option value="Choose...">Choisisez un cours</option>
+                          <option value="SYS1">SYS1</option>
+                          <option value="PROG1">PROG1</option>
+                          <option value="PROG2">PROG2</option>
+                          <option value="EL1">EL1</option>
+                        </Form.Select> :
+                      <Form.Control aria-label="Text input with dropdown button"  placeholder="Nom de l'Event"/>
+                      }  
                       </InputGroup>
                     </div>
                   </div> <br />
                   <div className='group-check-container'>
-                    <h6>Choise the group participant :</h6>
+                    <h6>Choisissez les groupes participants :</h6>
                     {['checkbox'].map((type) => (
                         <div key={`reverse-${type}`} className="group">
                             <Form.Check
@@ -112,15 +113,13 @@ export function Event() {
                     ))}      
                   </div> <br />
                   <div className='time'>
-                    <h6>Begin Time :</h6>
+                    <h6>Début</h6>
                     <Form.Group>
-                      <Form.Control type="time" name="date" placeholder="Begin time" size="sm" 
-                      style={{marginTop : "2%"}}/>
+                      <input type={"datetime-local"} name="date" />
                     </Form.Group>
-                    <h6 style={{marginTop : "1%"}}>Time to finish</h6>
+                    <h6 style={{marginTop : "1%"}}>Fin</h6>
                     <Form.Group>
-                      <Form.Control type="time" name="date" placeholder="Begin time" size="sm" 
-                      style={{marginTop : "2%"}}/>
+                      <input type={"datetime-local"} name="date" />
                     </Form.Group>
                   </div>
                 </Form>
@@ -128,7 +127,7 @@ export function Event() {
               <Modal.Footer>
                 <Link to='/presence'>
                 <Button variant="warning">
-                  Save Changes
+                  Sauvegarder
                 </Button>
                 </Link>
               </Modal.Footer>

@@ -22,10 +22,10 @@ export function StudentList() {
                   <table className="table table-borderless text-white mb-0">
                     <thead>
                       <tr>
-                        <th scope="col">ID STUDENT</th>
-                        <th scope="col">NAME</th>
-                        <th scope="col">LASTNAME</th>
-                        <th scope="col">STATUS</th>
+                        <th scope="col">Ref STD</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prénom</th>
+                        <th scope="col">Status</th>
                         <th scope="col"></th>
                       </tr>
                     </thead>
